@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dennisys · Clear pricing, modern solutions</title>
+  <!-- Google Fonts & simple reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8fafc;
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* header */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1E2A5E, #2E4A7C);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #eef2ff;
+      color: #1e3a8a;
+      border-radius: 100px;
+      padding: 0.2rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #334155;
+      max-width: 700px;
+      margin: 1rem auto 0;
+    }
+
+    /* section styling */
+    .section {
+      margin-bottom: 3.5rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 5px solid #2c5f8a;
+      padding-left: 1rem;
+    }
+    .section-title i {
+      color: #2c5f8a;
+      font-size: 1.6rem;
+    }
+
+    /* card grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+    .price-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+      border: 1px solid #e9eef3;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+      border-color: #cbdff2;
+    }
+    .card-content {
+      padding: 1.8rem 1.5rem 1.8rem;
+      flex: 1;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .popular-tag {
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+    }
+    .price {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #0f2b3d;
+      margin: 0.75rem 0 0.5rem;
+      line-height: 1.2;
+    }
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #5b6e8c;
+    }
+    .desc {
+      color: #334155;
+      font-size: 0.9rem;
+      margin: 0.75rem 0 1rem;
+      line-height: 1.45;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 1rem 0 1rem;
+      font-size: 0.85rem;
+    }
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2c3e50;
+    }
+    .feature-list i {
+      color: #2c7a4d;
+      font-size: 0.75rem;
+      width: 18px;
+    }
+    .btn-outline-light {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #f1f5f9;
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1f4a6e;
+      text-decoration: none;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .btn-outline-light:hover {
+      background: #e2e8f0;
+      color: #0f2b3d;
+    }
+
+    /* hourly rates grid (modern card-like rows) */
+    .hourly-grid {
+      background: white;
+      border-radius: 28px;
+      border: 1px solid #eef2f8;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .hourly-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.8rem;
+      border-bottom: 1px solid #ecf3f9;
+      transition: background 0.1s ease;
+    }
+    .hourly-row:last-child {
+      border-bottom: none;
+    }
+    .hourly-row:hover {
+      background: #fafdff;
+    }
+    .service-name {
+      font-weight: 600;
+      width: 190px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-name i {
+      width: 24px;
+      color: #2c5f8a;
+    }
+    .rate-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .rate-price {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #1e4620;
+    }
+    .min-engage {
+      background: #f1f5f9;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #2d4a6e;
+    }
+    .note {
+      font-size: 0.75rem;
+      color: #5b6e8c;
+    }
+    @media (max-width: 760px) {
+      .hourly-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .service-name {
+        width: auto;
+      }
+    }
+
+    /* retainers small grid */
+    .retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .retainer-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.3rem 1.2rem;
+      border: 1px solid #e2edf7;
+      transition: all 0.2s;
+    }
+    .retainer-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .retainer-price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1f3b4c;
+      margin: 0.5rem 0;
+    }
+    .retainer-price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* payment terms */
+    .terms-panel {
+      background: #eef3fc;
+      border-radius: 28px;
+      padding: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .term-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .term-item i {
+      font-size: 1.2rem;
+      color: #1f6392;
+    }
+    .fine-print {
+      font-size: 0.75rem;
+      color: #4a5c72;
+      margin-top: 1rem;
+      text-align: center;
+      border-top: 1px solid #cbdbe6;
+      padding-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #6c7f94;
+    }
+    hr {
+      margin: 1rem 0;
+      border: none;
+      border-top: 1px solid #e2edf2;
+    }
+    a {
+      text-decoration: none;
+    }
+    .btn-contact {
+      background: #1f4e79;
+      color: white;
+      padding: 0.6rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+    .btn-contact:hover {
+      background: #0f3b5c;
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="badge"><i class="fas fa-code"></i> Dennisys · 2026</div>
+    <h1>Smart pricing, <br>exceptional delivery</h1>
+    <p>Fixed‑price projects, transparent hourly rates, and flexible retainers. <br>No bloat, no hidden fees — only what you truly need.</p>
+    <div style="margin-top: 1.2rem;">
+      <a href="#" class="btn-contact" style="background:#2c5f8a;"><i class="fas fa-comment"></i> Let's build together</a>
+    </div>
+  </div>
+
+  <!-- 1. Website Development -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-laptop-code"></i>
+      <h2>Website development</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-header"><span class="card-title">Starter Site</span></div>
+          <div class="price">R 1,800 <small>once-off</small></div>
+          <div class="desc">Single‑page site, mobile‑friendly, deployed fast. Perfect for freelancers & side hustles.</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Fully responsive</li>
+            <li><i class="fas fa-check-circle"></i> Fast hosting setup</li>
+            <li><i class="fas fa-check-circle"></i> 1 round of revisions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-header"><span class="card-title">Business Website</span><span class="popular-tag"><i class="fas fa-fire"></i> Most popular</span></div>
+          <div class="price">R 5,500 <small>once-off</small></div>
+          <div class="desc">Up to 5 pages, custom design, CMS integration, analytics, and fast hosting setup.</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Content management (CMS)</li>
+            <li><i class="fas fa-check-circle"></i> Google Analytics & SEO basics</li>
+            <li><i class="fas fa-check-circle"></i> Priority email support (30 days)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-header"><span class="card-title">Web Application</span></div>
+          <div class="price">R 18,000+ <small>project-based</small></div>
+          <div class="desc">Full‑stack web app with auth, database, admin dashboard. Scoped to your needs.</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> User authentication & roles</li>
+            <li><i class="fas fa-check-circle"></i> API integrations + dashboard</li>
+            <li><i class="fas fa-check-circle"></i> Custom quote per scope</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Mobile Application -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-mobile-alt"></i>
+      <h2>Mobile apps (Flutter · cross‑platform)</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-title">Starter App</div>
+          <div class="price">R 8,500 <small>once-off</small></div>
+          <div class="desc">Lightweight Flutter app. Auth, 3 screens, basic API. Android‑first, fast to ship.</div>
+          <ul class="feature-list"><li><i class="fas fa-check-circle"></i> Authentication ready</li><li><i class="fas fa-check-circle"></i> Clean UI components</li><li><i class="fas fa-check-circle"></i> App store guidance</li></ul>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-header"><span class="card-title">Full‑Feature App</span><span class="popular-tag">🔥 Most popular</span></div>
+          <div class="price">R 26,000 <small>once-off</small></div>
+          <div class="desc">Complete app with backend, real‑time data, biometrics, and AI integration.</div>
+          <ul class="feature-list"><li><i class="fas fa-check-circle"></i> Real‑time sync / Firestore</li><li><i class="fas fa-check-circle"></i> Biometrics + push notif</li><li><i class="fas fa-check-circle"></i> OpenAI / smart features</li></ul>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-title">Enterprise App</div>
+          <div class="price">R 65,000+ <small>project-based</small></div>
+          <div class="desc">Multi‑role, complex workflows, custom backend, analytics. Tailored for scale.</div>
+          <ul class="feature-list"><li><i class="fas fa-check-circle"></i> Admin dashboard & permissions</li><li><i class="fas fa-check-circle"></i> Advanced data security</li><li><i class="fas fa-check-circle"></i> Dedicated deployment</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Automations & AI pipelines -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-robot"></i>
+      <h2>Automations & AI integrations</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-title">Quick Script</div>
+          <div class="price">R 1,200 <small>once-off</small></div>
+          <div class="desc">Single‑task automation: scheduled jobs, simple API calls, or data sync.</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-header"><span class="card-title">Pipeline Build</span><span class="popular-tag">⚡ Most popular</span></div>
+          <div class="price">R 6,500 <small>once-off</small></div>
+          <div class="desc">Multi‑step pipeline: fetch → transform → persist → notify (e.g., API → SQL → Telegram).</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="card-content">
+          <div class="card-title">AI Integration</div>
+          <div class="price">R 12,000+ <small>project-based</small></div>
+          <div class="desc">LLM‑powered processing, document analysis, AI‑driven reporting pipelines.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Hourly rates – clean and friendly -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-clock"></i>
+      <h2>Flexible hourly support</h2>
+    </div>
+    <div class="hourly-grid">
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-code"></i> General Development</div><div class="rate-detail"><span class="rate-price">R 490 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 2 hrs</span><span class="note">frontend, backend, mobile</span></div></div>
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-bug"></i> Bug Fixes & Patches</div><div class="rate-detail"><span class="rate-price">R 390 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 1 hr</span><span class="note">existing codebases, hotfixes</span></div></div>
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-brain"></i> Architecture & Consulting</div><div class="rate-detail"><span class="rate-price">R 690 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 1 hr</span><span class="note">tech planning, code review</span></div></div>
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-chart-line"></i> Automation Scripting</div><div class="rate-detail"><span class="rate-price">R 450 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 2 hrs</span><span class="note">Python, APIs, data pipelines</span></div></div>
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-cloud-upload-alt"></i> DevOps / Deployment</div><div class="rate-detail"><span class="rate-price">R 520 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 1 hr</span><span class="note">Render, Docker, CI/CD</span></div></div>
+      <div class="hourly-row"><div class="service-name"><i class="fas fa-microchip"></i> AI / LLM Integration</div><div class="rate-detail"><span class="rate-price">R 650 <span style="font-weight:400">/hr</span></span><span class="min-engage">min 2 hrs</span><span class="note">OpenAI, prompt engineering, pipelines</span></div></div>
+    </div>
+    <div class="fine-print" style="margin-top: 12px; text-align: left; background: none; padding-left: 0;">✔ Hourly work is invoiced weekly — payment due within 7 days. Simple, transparent.</div>
+  </div>
+
+  <!-- 5. Monthly retainers & add-ons -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-handshake"></i>
+      <h2>Retainers & ongoing care</h2>
+    </div>
+    <div class="retainer-grid">
+      <div class="retainer-card"><h4>Support Retainer <span style="font-weight:400">Basic</span></h4><div class="retainer-price">R 1,800 <span>/mo</span></div><p>Up to 4h bug fixes + email support. Ideal for light maintenance.</p></div>
+      <div class="retainer-card"><h4>Support Retainer <span style="font-weight:400">Standard</span></h4><div class="retainer-price">R 3,900 <span>/mo</span></div><p>Up to 10h development + priority response. Most flexible.</p></div>
+      <div class="retainer-card"><h4>Ongoing Build Retainer</h4><div class="retainer-price">R 6,800 <span>/mo</span></div><p>Up to 18h feature dev + deployments. Continuous improvement.</p></div>
+      <div class="retainer-card"><h4>Hosting & Maintenance</h4><div class="retainer-price">R 600 <span>/mo</span></div><p>Render server monitoring, uptime checks, basic support.</p></div>
+    </div>
+    <div class="fine-print" style="margin-top: 12px;"><i class="fas fa-calendar-alt"></i> Retainers are billed monthly in advance. Cancel anytime with 30 days notice.</div>
+  </div>
+
+  <!-- 6. Payment terms simplified -->
+  <div class="section">
+    <div class="section-title">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <h2>Fair & straightforward terms</h2>
+    </div>
+    <div class="terms-panel">
+      <div class="term-item"><i class="fas fa-hand-holding-usd"></i> 50% deposit to start fixed projects</div>
+      <div class="term-item"><i class="fas fa-check-double"></i> 50% balance on delivery (source code handover)</div>
+      <div class="term-item"><i class="fas fa-clock"></i> Hourly: invoiced weekly | due in 7 days</div>
+      <div class="term-item"><i class="fas fa-sync-alt"></i> Unlimited revisions (in scope) – out of scope = hourly</div>
+      <div class="term-item"><i class="fas fa-percent"></i> Late payment: 2% / month after 14 days overdue</div>
+    </div>
+    <div class="fine-print" style="margin-top: 1rem; background: #ffffffcc; border-radius: 60px; padding: 0.5rem;">
+      💡 All prices in South African Rand (ZAR). No hidden VAT? — we'll clarify based on your region.
+    </div>
+  </div>
+
+  <footer>
+    <hr>
+    <p><i class="fas fa-gem"></i> Dennisys — modern dev, fair pricing. From side projects to enterprise scale, we deliver clean code and reliable partnerships.<br>
+    <a href="#" style="color:#1f6392;">hello@dennisys.dev</a> · Let’s discuss your vision</p>
+  </footer>
+</div>
+</body>
+</html>
